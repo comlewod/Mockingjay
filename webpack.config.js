@@ -9,6 +9,7 @@ let config = {
 		app: path.resolve(__dirname, 'src', 'app.js'),
 	},
 	output: {
+		publicPath: '/dist/',
 		path: path.resolve(__dirname, 'public', 'dist'),	
 		filename: '[name]-bundle.js'
 	},
