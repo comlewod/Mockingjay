@@ -18,7 +18,7 @@ Object.keys(webpackConfig.entry).forEach(key => {
 });
 
 //使用开发版本
-webpackConfig.resolve.alias['vue'] = 'vue/dist/vue.js'
+//webpackConfig.resolve.alias['vue'] = 'vue/dist/vue.js'
 
 let compiler = webpack(webpackConfig);
 let app = express();

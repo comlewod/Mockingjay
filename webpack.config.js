@@ -15,7 +15,7 @@ let config = {
 	},
 	resolve: {
 		alias: {
-			'vue': 'vue/dist/vue.min.js'
+			//'vue': 'vue/dist/vue.min.js'
 		},
 		extensions: ['.js', '.vue']	
 	},
@@ -43,6 +43,10 @@ let config = {
 		}),
 		new VueLoaderPlugin(),
 	],
+	externals: {
+		'vue': 'Vue',
+		'element-ui': 'ELEMENT'
+	},
 	mode: "production"
 }
 

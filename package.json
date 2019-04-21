@@ -4,9 +4,8 @@
   "description": "mock-server",
   "main": "index.js",
   "dependencies": {
-    "element-ui": "^2.7.2",
     "express": "^4.16.4",
-    "vue": "^2.6.10"
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
     "babel-loader": "^8.0.5",
