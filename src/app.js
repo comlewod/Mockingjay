@@ -1,8 +1,14 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui'
+//import ElementUI from 'element-ui'
 
-Vue.use(ElementUI)
+//Vue.use(ElementUI)
+//console.log(123)
 
 new Vue({
-	el: '#app'
+	el: '#app',
+	data: {
+		txt: 'Hello Mockingjay'
+	},
+	created(){
+	}
 })

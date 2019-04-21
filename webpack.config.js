@@ -14,13 +14,23 @@ let config = {
 		filename: '[name]-bundle.js'
 	},
 	resolve: {
+		alias: {
+			'vue': 'vue/dist/vue.min.js'
+		},
 		extensions: ['.js', '.vue']	
 	},
 	module: {
 		rules: [
 			{ 
+				test: /\.js/,
+				loader: 'babel-loader',
+				//js文件里引入的node模块不进行编译，因为node_modules下的文件已经是采用es5语法，不需要进行编译（但还是会引入文件）
+				exclude: /node_modules/
+			},
+			{ 
 				test: /\.vue$/,
-				loader: 'vue-loader'
+				loader: 'vue-loader',
+				exclude: /node_modules/
 			}
 		]
 	},
@@ -32,7 +42,8 @@ let config = {
 			template: 'src/template.html'
 		}),
 		new VueLoaderPlugin(),
-	]
+	],
+	mode: "production"
 }
 
 module.exports = config

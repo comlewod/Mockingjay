@@ -1,17 +1,10 @@
 const path = require('path');
 const express = require('express');
+let config = require('./config')
 
-var config = {
-	SERVER_PORT: 5006,
-	ROOT: __dirname,
-};
+let app = express();
 
-var app = express();
-
-app.use(express.static(path.join(config.ROOT, 'public')));
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(config.ROOT, 'views', 'index.html'))
-})
+app = require('./middlewares/app')(app);
 
 app.listen(config.SERVER_PORT);
 
