@@ -10,7 +10,6 @@ Vue.component('index-page', IndexComp)
 new Vue({
 	el: '#app',
 	data: {
-		txt: 'Hello Mockingjay'
 	},
 	created(){
 	}

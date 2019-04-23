@@ -1,16 +1,17 @@
 <template>
-	<div class="index-comp">
-		{{ txt }}
-		<el-button>默认按钮</el-button>
-		<el-button type="success">成功按钮</el-button>
-	</div>
+	<el-container>
+		<el-header>Mockingjay</el-header>
+		<el-container>
+			<el-aside></el-aside>
+			<el-main></el-main>
+		</el-container>
+	</el-container>
 </template>
 
 <script>
 export default {
 	data(){
 		return {
-			txt: 'Hi, Index Page'
 		}
 	}
 }

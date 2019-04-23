@@ -43,7 +43,7 @@ let config = {
 			template: 'src/template.html'
 		}),
 		new VueLoaderPlugin(),
-		new webpack.HashedModuleIdsPlugin()
+		new webpack.HashedModuleIdsPlugin()	//只有改动的文件的hash发生变化，避免每次打包所有文件hash发生变化
 	],
 	externals: {
 		'vue': 'Vue',
