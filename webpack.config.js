@@ -2,6 +2,7 @@ const path = require('path');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack')
 
 let config = {
 	devtool: 'source-map',	 
@@ -42,6 +43,7 @@ let config = {
 			template: 'src/template.html'
 		}),
 		new VueLoaderPlugin(),
+		new webpack.HashedModuleIdsPlugin()
 	],
 	externals: {
 		'vue': 'Vue',
