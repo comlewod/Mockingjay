@@ -1,18 +1,13 @@
 <template>
 	<el-container>
-		<el-header>Mockingjay</el-header>
+		<el-header background-color="#545c64">Mockingjay</el-header>
 		<el-container>
-			<el-aside></el-aside>
+			<comp-aside></comp-aside>
 			<el-main></el-main>
 		</el-container>
 	</el-container>
 </template>
 
-<script>
-export default {
-	data(){
-		return {
-		}
-	}
-}
-</script>
+<!-- vue loader会解析src引入的资源，路径前面是".“引入的表示当前页面的资源而不是模块引入，和import区分 -->
+<style src="./index.less"></style>
+<script src="./index.js"></script>

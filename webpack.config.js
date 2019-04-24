@@ -32,6 +32,14 @@ let config = {
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				exclude: /node_modules/
+			},
+			{
+				test: /\.less$/,
+				loader: [
+					'vue-style-loader',
+					'css-loader',
+					'less-loader'
+				]
 			}
 		]
 	},
