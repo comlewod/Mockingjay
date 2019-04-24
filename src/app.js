@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import IndexComp from './index'
+import IndexComp from './index/index.vue'
 
 Vue.use(ElementUI)
 //console.log(123)

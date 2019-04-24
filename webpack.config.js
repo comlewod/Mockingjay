@@ -2,6 +2,7 @@ const path = require('path');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 
 let config = {
@@ -36,7 +37,8 @@ let config = {
 			{
 				test: /\.less$/,
 				loader: [
-					'vue-style-loader',
+					//生产环境使用分离出css文件，开发模式使用内联（方便热替换）
+					process.env.NODE_ENV == 'production' ? MiniCssExtractPlugin.loader : 'vue-style-loader',
 					'css-loader',
 					'less-loader'
 				]
@@ -51,7 +53,10 @@ let config = {
 			template: 'src/template.html'
 		}),
 		new VueLoaderPlugin(),
-		new webpack.HashedModuleIdsPlugin()	//只有改动的文件的hash发生变化，避免每次打包所有文件hash发生变化
+		new webpack.HashedModuleIdsPlugin(),	//只有改动的文件的hash发生变化，避免每次打包所有文件hash发生变化
+		new MiniCssExtractPlugin({
+			filename: 'style.css'
+		})
 	],
 	externals: {
 		'vue': 'Vue',
