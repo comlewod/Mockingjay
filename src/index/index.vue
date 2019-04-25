@@ -1,7 +1,9 @@
 <template>
 	<el-container>
-		<el-header background-color="#545c64">Mockingjay</el-header>
-		<el-container>
+		<el-header class="mk-header">
+			<span class="header-title">Mockingjay</span>
+		</el-header>
+		<el-container class="mk-container">
 			<comp-aside></comp-aside>
 			<el-main></el-main>
 		</el-container>

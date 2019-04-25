@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/common/aside/aside.less","webpack:///./src/index/index.less"],"names":[],"mappings":"AAAA;AACA;AACA;;ACFA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"style.css","sourcesContent":[".menu {\n  height: 100%;\n}\n","html,\nbody {\n  height: 100%;\n  padding: 0;\n  margin: 0;\n}\n#app {\n  height: 100%;\n}\n"],"sourceRoot":""}

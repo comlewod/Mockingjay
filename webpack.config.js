@@ -19,7 +19,7 @@ let config = {
 		alias: {
 			//'vue': 'vue/dist/vue.min.js'
 		},
-		extensions: ['.js', '.vue']	
+		extensions: ['.js', '.vue', '.less']	
 	},
 	module: {
 		rules: [
