@@ -4,17 +4,18 @@
 		<meta charset="UTF-8">
 		<title>Webpack App</title>
 		<!-- 引入样式 -->
-		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@2.8.0/lib/theme-chalk/index.css">
 		
 	</head>
 	<body>
 		<div id="app" v-cloak>
-			<index-page></index-page>
+			<index-comp></index-comp>
 		</div>
 		<!-- import Vue before Element -->
 		<script src="/libs/vue/vue.js"></script>
+		<script src="/libs/vue/vue-router.js"></script>
 
 		<!-- 引入组件库 -->
-		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/element-ui@2.8.0/lib/index.js"></script>
 	</body>
 </html>

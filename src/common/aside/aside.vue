@@ -1,6 +1,10 @@
 <template>
 	<div class="mk-aside">
-		<el-aside class="menu" width="200px">
+		<el-aside width="200px">
+			<router-link class="aside-item" to="/list">
+				<i class="el-icon-notebook-2"></i>
+				api list
+			</router-link>
 		</el-aside>
 	</div>
 </template>

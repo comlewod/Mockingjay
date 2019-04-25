@@ -27,7 +27,8 @@ let config = {
 				test: /\.js/,
 				loader: 'babel-loader',
 				//js文件里引入的node模块不进行编译，因为node_modules下的文件已经是采用es5语法，不需要进行编译（但还是会引入文件）
-				exclude: /node_modules/
+				exclude: path.resolve(__dirname, 'node_modules'),
+				include: path.resolve(__dirname, 'src')
 			},
 			{ 
 				test: /\.vue$/,
@@ -60,7 +61,8 @@ let config = {
 	],
 	externals: {
 		'vue': 'Vue',
-		'element-ui': 'ELEMENT'
+		'element-ui': 'ELEMENT',
+		'vueRouter': 'VueRouter'
 	},
 	mode: "production"
 }

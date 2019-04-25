@@ -3,9 +3,13 @@
 		<el-header class="mk-header">
 			<span class="header-title">Mockingjay</span>
 		</el-header>
+
 		<el-container class="mk-container">
 			<comp-aside></comp-aside>
-			<el-main></el-main>
+
+			<el-main>
+				<router-view></router-view>
+			</el-main>
 		</el-container>
 	</el-container>
 </template>
