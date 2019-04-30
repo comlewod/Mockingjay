@@ -13,7 +13,8 @@ let config = {
 	output: {
 		publicPath: '/dist/',
 		path: path.resolve(__dirname, 'public', 'dist'),	
-		filename: '[name]-bundle.js'
+		filename: '[name]-bundle.js',
+		chunkFilename: '[name].[chunkhash:6].js',	//不是上面的入口文件引入的模块，比如按需加载时，加上hash前缀
 	},
 	resolve: {
 		alias: {

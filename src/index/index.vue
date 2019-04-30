@@ -1,7 +1,7 @@
 <template>
 	<el-container>
 		<el-header class="mk-header">
-			<span class="header-title">Mockingjay</span>
+			<a class="header-title" href="/">Mockingjay</a>
 		</el-header>
 
 		<el-container class="mk-container">

@@ -8,11 +8,18 @@ import './common/common_css/index'
 Vue.use(ElementUI)
 
 const home = { template: '<div>Welcome</div>' }
-const apiList = { template: '<div>列表</div>' }
+
+//异步组价必须为一个返回promise（该promise要resolve该异步组件）的函数
+//const List = () => {
+//	return Promise.resolve({ template: '<div>hahaha</div>' })
+//}
+//webpack异步加载组件，特殊的注释语法提供chunk name
+const List = () => import(/* webpackChunkName: "list"*/ './list/list.vue')
+
 
 const routes = [
 	{ path: '/', component: home },
-	{ path: '/list', component: apiList }
+	{ path: '/list', component: List}	
 ]
 
 let router = new VueRouter({
@@ -27,3 +34,6 @@ window.appVue = new Vue({
 	},
 	router,
 })
+
+if( true ){
+}
