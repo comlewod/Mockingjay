@@ -1,28 +1,40 @@
 <template>
 	<div>
-		<h3>路由列表</h3>
-		<div>
+		<el-row>
+			<h3>路由列表</h3>
+		</el-row>
+		<el-row>
 			<el-input v-model="input" placeholder="请输入内容"></el-input>
+		</el-row>
+		<el-row>
 			<el-button type="primary" @click="addRouter">添加路由</el-button>
-		</div>
-		<div>
-			<el-input
-				type="textarea"
-				:rows="10"
-				placeholder="请输入json字符串"
-				@focus="jsonErr = false"
-				@blur="blurJson"
-				v-model="jsonStr"
-			>
-			</el-input>
-			<el-alert
-				v-show="jsonErr"
-				title="json格式错误"
-				type="error"
-				:closable="false"
-			>
-			</el-alert>
-		</div>
+		</el-row>
+		<el-row>
+			<el-col :span="12">
+				<el-input
+					type="textarea"
+					:rows="10"
+					:autosize="true"
+					placeholder="请输入json字符串"
+					@focus="jsonErr = false"
+					@input="blurJson"
+					@blur="blurJson"
+					v-model="jsonStr"
+				>
+				</el-input>
+
+				<el-alert
+					v-show="jsonErr"
+					title="json格式错误"
+					type="error"
+					:closable="false"
+				>
+				</el-alert>
+			</el-col>
+			<el-col :span="12">
+				<json-tree :obj="jsonObj"></json-tree>
+			</el-col>
+		</el-row>
 	</div>
 </template>
 

@@ -1,13 +1,19 @@
+import jsonTree from './jsonTree.vue'
+Vue.component('json-tree', jsonTree)
+
 export default {
 	data(){
 		return {
+			jsType: {},
 			input: '',
 
 			jsonStr: '',
+			jsonObj: {},
 			jsonErr: false,
 			jsonArr: [],
 		}
 	},
+	
 	methods: {
 		addRouter(){
 		},
@@ -21,7 +27,7 @@ export default {
 					this.jsonErr = true
 					return
 				}
-				console.log(obj)
+				Vue.set(this, 'jsonObj', obj)
 				this.objectLoop(obj)	
 			}
 		},
@@ -34,7 +40,8 @@ export default {
 				}
 				this.jsonArr.push(item)
 			}
-		}
+		},
+		
 	},
 	components: {
 	}
