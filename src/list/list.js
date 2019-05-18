@@ -1,4 +1,4 @@
-import jsonTree from './jsonTree.vue'
+import jsonTree from './jsonTree/jsonTree.vue'
 Vue.component('json-tree', jsonTree)
 
 export default {
@@ -28,20 +28,26 @@ export default {
 					return
 				}
 				Vue.set(this, 'jsonObj', obj)
-				this.objectLoop(obj)	
+				let newJson = this.objectLoop(obj)	
+				console.log(newJson)
 			}
 		},
-		objectLoop(obj){
+		objectLoop(obj, ids){
+			let newObj = {}
 			for( let key in obj ){
-				let value = obj[value]
-				let item = {
-					key,
-					value,
+				let value = obj[key]
+				let type = this.judgeType(value)
+				let item = { type, value }
+				item.ids = ids ? ids.slice(0) : []
+				item.ids.push(key)
+				if( ['object', 'array'].includes(type) ){
+					item.value = this.objectLoop(value, item.ids.slice(0))	
 				}
-				this.jsonArr.push(item)
+				newObj[key] = item
 			}
+			return newObj
 		},
-		
+		judgeType: M_TOOLS.judgeType
 	},
 	components: {
 	}

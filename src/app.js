@@ -4,6 +4,7 @@ import ElementUI from 'element-ui'
 import IndexComp from './index/index.vue'
 
 import './common/common_css/index'
+import './common/common_js/index'
 
 Vue.use(ElementUI)
 

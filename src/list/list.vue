@@ -5,17 +5,18 @@
 		</el-row>
 		<el-row>
 			<el-input v-model="input" placeholder="请输入内容"></el-input>
+			<el-button type="primary" @click="addRouter">添加路由</el-button>
 		</el-row>
 		<el-row>
-			<el-button type="primary" @click="addRouter">添加路由</el-button>
+			<p>json内容</p>
 		</el-row>
 		<el-row>
 			<el-col :span="12">
 				<el-input
 					type="textarea"
+					placeholder="请输入json字符串"
 					:rows="10"
 					:autosize="true"
-					placeholder="请输入json字符串"
 					@focus="jsonErr = false"
 					@input="blurJson"
 					@blur="blurJson"
@@ -32,7 +33,9 @@
 				</el-alert>
 			</el-col>
 			<el-col :span="12">
-				<json-tree :obj="jsonObj"></json-tree>
+				<div class="obj-tree">
+					<json-tree :obj="jsonObj"></json-tree>
+				</div>
 			</el-col>
 		</el-row>
 	</div>
