@@ -18,8 +18,8 @@ export default {
 						typeof obj
 			return type
 		},
-		editItem(){
-			this.editDialogShow = true
+		editItem(keys){
+			eventCenter.$emit('getIds', keys)
 		},
 		judgeType: M_TOOLS.judgeType
 	},

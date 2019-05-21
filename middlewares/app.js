@@ -13,6 +13,8 @@ module.exports = app => {
 
 	app.use(express.static(path.join(config.ROOT, 'public')));
 
+	app.use('/api', require('../controllers'));
+
 	//前端路由
 	app.get('/*', (req, res) => {
 		//不使用渲染引擎，所以使用sendFile

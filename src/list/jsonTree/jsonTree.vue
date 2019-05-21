@@ -1,45 +1,36 @@
 <template>
 	<div>
-		<div :class="['each-item', 'item-' + judgeType(item)]" v-for="(item, key) in obj">
+		<div :class="['each-item', 'item-' + item.type]" v-for="(item, key) in obj">
 			<!-- 对象 -->
-			<template v-if="judgeType(item) == 'object'">
+			<template v-if="item.type == 'object'">
 				<div>
 					<span class="item-key" v-if="judgeType(obj) == 'object'">{{ key }}: </span>
 					<span>{</span>
 				</div>
 				<div class="child-tree">
-					<json-tree :obj="item"></json-tree>
+					<json-tree :obj="item.value"></json-tree>
 				</div>
 				<span>}</span>
 			</template>
 			<!-- 数组 -->
-			<template v-else-if="judgeType(item) == 'array'">
+			<template v-else-if="item.type == 'array'">
 				<span class="item-key">{{ key }}: [</span>
 				<div class="child-tree">
-					<json-tree :obj="item"></json-tree>
+					<json-tree :obj="item.value"></json-tree>
 				</div>
 				<span>]</span>
 			</template>
 			
 			<template v-else>
 				<span class="item-key">{{ key }}: </span>
-				<span class="item-val" v-if="judgeType(item) == 'string'">"{{ item }}"</span>
-				<span class="item-val" v-else>{{ item }}</span>
+				<span class="item-val" v-if="item.type == 'string'">"{{ item.value }}"</span>
+				<span class="item-val" v-else>{{ item.value }}</span>
 			</template>
 
 			<div class="edit-bar">
-				<i class="el-icon-edit" @click="editItem()"></i>
+				<i class="el-icon-edit" @click="editItem(item.keys)"></i>
 			</div>
 		</div>
-
-		<el-dialog title="编辑" :visible.sync="editDialogShow">
-			<div>
-			</div>
-			<div slot="footer" class="dialog-footer">
-				<el-button @click="editDialogShow = false">取消</el-button>
-				<el-button type="primary">确定</el-button>
-			</div>
-		</el-dialog>
 	</div>
 </template>
 
