@@ -4,8 +4,13 @@
 			<h3>项目列表</h3>
 		</el-row>		
 		<el-row>
-			<el-table :data="list" stripe style="width: 100%">
-    			<el-table-column label="日期" width="180"></el-table-column>
+			<el-table :data="list" stripe>
+    			<el-table-column label="文件名" highlight-current-row="true">
+					<template slot-scope="scope">
+						<i class="el-icon-folder-opened"></i>
+						<span>{{ scope.row.program }}</span>
+					</template>
+				</el-table-column>
   			</el-table>
 		</el-row>
 	</div>
