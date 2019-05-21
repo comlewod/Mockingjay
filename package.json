@@ -4,6 +4,7 @@
   "description": "mock-server",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "vue-template-compiler": "^2.6.10"
   },
@@ -14,6 +15,7 @@
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
+    "glob": "^7.1.4",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",

@@ -3,8 +3,13 @@
 		<el-aside width="50px">
 			<el-tooltip content="新增项目" placement="right">
 				<a class="aside-item" href="javascript:;" @click="addProgram">
-					<i class="el-icon-circle-plus"></i>
+					<i class="el-icon-folder-add"></i>
 				</a>
+			</el-tooltip>
+			<el-tooltip content="项目列表" placement="right">
+				<router-link class="aside-item" to="/programs">
+					<i class="el-icon-folder"></i>
+				</router-link>
 			</el-tooltip>
 			<el-tooltip content="路由列表" placement="right">
 				<router-link class="aside-item" to="/list">

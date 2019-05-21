@@ -26,7 +26,13 @@ export default {
 					axios.post('/api/program/add', { 
 						name: name
 					}).then(res => {
-						console.log(res)
+						res = res.data
+						if( res.code == 0 ){
+							this.newProgram.name = ''
+							this.newProgram.show = false
+						} else {
+							this.newProgram.err = res.msg 
+						}
 					})
 				} else {
 					this.newProgram.err = "请输入1-15个英文（不能有空格)"

@@ -16,11 +16,13 @@ const home = { template: '<div>Welcome</div>' }
 //}
 //webpack异步加载组件，特殊的注释语法提供chunk name
 const List = () => import(/* webpackChunkName: "list"*/ './list/list.vue')
+const Programs = () => import(/* webpackChunkName: "list"*/ './programs/programs.vue')
 
 
 const routes = [
 	{ path: '/', component: home },
-	{ path: '/list', component: List}	
+	{ path: '/programs', component: Programs },
+	{ path: '/list', component: List }	
 ]
 
 let router = new VueRouter({

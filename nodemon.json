@@ -1,4 +1,4 @@
 {
-	"watch": ["www", "middlewares", "controllers"],
+	"watch": ["www", "middlewares", "controllers", "database", "models"],
 	"ignore": ["src"]
 }
