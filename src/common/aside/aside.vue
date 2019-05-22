@@ -11,7 +11,7 @@
 					<i class="el-icon-folder"></i>
 				</router-link>
 			</el-tooltip>
-			<el-tooltip content="路由列表" placement="right">
+			<el-tooltip content="新增路由" placement="right">
 				<router-link class="aside-item" to="/list">
 					<i class="el-icon-notebook-2"></i>
 				</router-link>

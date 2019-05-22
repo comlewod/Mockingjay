@@ -4,6 +4,8 @@ const path = require('path')
 const config = require('../config')
 
 module.exports = app => {
+	require('./getPrograms')(app)
+
 	//允许跨域访问	
 	app.all('*', (req, res, next) => {
 		res.header("Access-Control-Allow-Origin", "*")

@@ -4,13 +4,21 @@
 			<h3>路由列表</h3>
 		</el-row>
 		<el-row>
-			<el-input v-model="input" placeholder="请输入内容"></el-input>
+			<h4>URL</h4>
+			<el-input v-model="routerPath" placeholder="/post/detail">
+				<template slot="prepend">Http://</template>
+			</el-input>
 			<el-button type="primary" @click="addRouter">添加路由</el-button>
 		</el-row>
+
 		<el-row>
-			<p>json内容</p>
+			<h4>TYPE</h4>
+			<el-radio v-model="reqType" label="GET" border>GET</el-radio>
+		    <el-radio v-model="reqType" label="POST" border>POST</el-radio>
 		</el-row>
+
 		<el-row>
+			<h4>JSON</h4>
 			<el-col :span="12">
 				<el-input
 					type="textarea"

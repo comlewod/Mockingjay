@@ -1,6 +1,6 @@
 <template>
 	<el-container>
-		<el-header class="mk-header">
+		<el-header height="30px" class="mk-header">
 			<a class="header-title" href="/">Mockingjay</a>
 		</el-header>
 

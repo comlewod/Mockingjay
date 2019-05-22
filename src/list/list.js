@@ -5,8 +5,7 @@ window.eventCenter = new Vue()
 export default {
 	data(){
 		return {
-			jsType: {},
-			input: '',
+			routerPath: '',
 
 			jsonStr: '',
 			jsonObj: {},
@@ -18,12 +17,22 @@ export default {
 				key: '',
 				obj: {},
 				list: []
-			}
+			},
+			reqType: 'GET',
+
+			program: '',
 		}
 	},
 	
 	methods: {
 		addRouter(){
+			let router_path = this.routerPath
+			let json_str = JSON.stringify(this.jsonObj)
+			let program = this.program
+			axios.post('/api/tree/add', {
+				router_path, json_str
+			}).then(res => {
+			})
 		},
 		blurJson(){
 			let str = this.jsonStr.trim()
