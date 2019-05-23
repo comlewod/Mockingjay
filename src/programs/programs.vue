@@ -4,7 +4,7 @@
 			<h3>项目列表</h3>
 		</el-row>		
 		<el-row>
-			<el-table :data="list" stripe>
+			<el-table :data="programs" stripe>
     			<el-table-column label="文件名" highlight-current-row="true">
 					<template slot-scope="scope">
 						<i class="el-icon-folder-opened"></i>

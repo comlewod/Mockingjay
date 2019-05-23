@@ -34,7 +34,7 @@ export default {
 			programs: 'programs'
 		}),
 		queryStr(){
-			let str = 'http://localhost:5006/' + this.request.program
+			let str = 'http://localhost:5006/' + this.request.program + this.request.url
 			if( this.request.query.length && this.request.query[0].key ){
 				str += '?' + this.request.query.map(item => item.key + '=' + item.value).join('&')
 			}

@@ -4,43 +4,53 @@
 			<h3>新增请求</h3>
 			<el-button type="primary" @click="addRouter">添加路由</el-button>
 		</el-row>
+		
 		<el-row>
+			<el-col :span="2">项目:</el-col>
+			<el-col :span="11">
+				<el-select v-model="request.program" placeholder="请选择项目">
+					<el-option v-for="item in programs" :key="item.program" :value="item.program"></el-option>
+				</el-select>
+			</el-col>
 		</el-row>
 		<el-row>
-			<span class="item-title">项目: </span>
-			<el-select v-model="request.program" placeholder="请选择项目">
-				<el-option v-for="item in programs" :key="item.program" :value="item.program"></el-option>
-  			</el-select>
-		</el-row>
-		<el-row>
-			<span class="item-title">url: </span>
-			<el-input class="req-path" v-model="request.url" placeholder="/post/detail">
-				<template slot="prepend">{{ 'http://localhost:5006/' + request.program }}</template>
-			</el-input>
+			<el-col :span="2">url:</el-col>
+			<el-col :span="11">
+				<el-input class="req-path" v-model="request.url" placeholder="/post/detail">
+					<template slot="prepend">{{ 'http://localhost:5006/' + request.program }}</template>
+				</el-input>
+			</el-col>
 		</el-row>
 		
 		<el-row>
-			<span class="item-title">参数: </span>
-			<span>
+			<el-col :span="2">参数:</el-col>
+			<el-col :span="8">
 				<params :title="'GET'" :params="request.query" @updateParams="updateQuery"></params>
+			</el-col>
+			<el-col :span="1">&nbsp;</el-col>
+			<el-col :span="8">
 				<params :title="'POST'" :params="request.body" :disabled="request.type != 'POST'" @updateParams="updateBody"></params>
-			</span>
+			</el-col>
 		</el-row>
 
 		<el-row>
-			<span class="item-title">生成链接: </span>
-			<el-input v-model="queryStr" readonly></el-input>
+			<el-col :span="2">参数:</el-col>
+			<el-col :span="11">
+				<el-input class="query-str" type="textarea" v-model="queryStr" readonly></el-input>
+			</el-col>
 		</el-row>
 
 		<el-row>
-			<span class="item-title">请求类型: </span>
-			<el-radio v-model="request.type" label="GET" border>GET</el-radio>
-		    <el-radio v-model="request.type" label="POST" border>POST</el-radio>
+			<el-col :span="2">参数:</el-col>
+			<el-col :span="11">
+				<el-radio v-model="request.type" label="GET" border>GET</el-radio>
+				<el-radio v-model="request.type" label="POST" border>POST</el-radio>
+			</el-col>
 		</el-row>
 
 		<el-row>
-			<h5>JSON</h5>
-			<el-col :span="12">
+			<el-col :span="2">json</el-col>
+			<el-col :span="11">
 				<el-input
 					type="textarea"
 					placeholder="请输入json字符串"
@@ -61,7 +71,7 @@
 				>
 				</el-alert>
 			</el-col>
-			<el-col :span="12">
+			<el-col :span="11">
 				<div class="obj-tree">
 					<json-tree :obj="jsonObj"></json-tree>
 				</div>

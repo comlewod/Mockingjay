@@ -13,7 +13,7 @@
 			</el-tooltip>
 			<el-tooltip content="新增路由" placement="right">
 				<router-link class="aside-item" to="/list">
-					<i class="el-icon-notebook-2"></i>
+					<i class="el-icon-circle-plus"></i>
 				</router-link>
 			</el-tooltip>
 		</el-aside>

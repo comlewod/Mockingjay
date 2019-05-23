@@ -1,18 +1,15 @@
+import { mapState } from 'vuex'
 
 export default {
 	data(){
 		return {
-			list: []
 		}
 	},
+	computed: {
+		...mapState({
+			programs: 'programs'
+		}),
+	},
 	created(){
-		let _this = this
-		axios.get('/api/program/get').then(res => {
-			res = res.data
-			if( res.code == 0 ){
-				this.list = res.info
-			} else {
-			}
-		})
 	},
 }
