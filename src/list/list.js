@@ -1,11 +1,20 @@
+import { mapState } from 'vuex'
 import jsonTree from './jsonTree/jsonTree.vue'
+import params from './params/params.vue'
+
 Vue.component('json-tree', jsonTree)
 window.eventCenter = new Vue()
 
 export default {
 	data(){
 		return {
-			routerPath: '',
+			request: {
+				url: '',
+				type: 'GET',
+				query: [{ key: '', value: ''}],
+				body: [{ key: '', value: ''}],
+				program: ''
+			},
 
 			jsonStr: '',
 			jsonObj: {},
@@ -18,19 +27,34 @@ export default {
 				obj: {},
 				list: []
 			},
-			reqType: 'GET',
-
-			program: '',
 		}
 	},
-	
+	computed: {
+		...mapState({
+			programs: 'programs'
+		}),
+		queryStr(){
+			let str = 'http://localhost:5006/' + this.request.program
+			if( this.request.query.length && this.request.query[0].key ){
+				str += '?' + this.request.query.map(item => item.key + '=' + item.value).join('&')
+			}
+			return str
+		},
+	},
 	methods: {
+		updateQuery(arr){
+			Vue.set(this.request, 'query', arr)
+		},
+		updateBody(arr){
+			console.log(arr)
+			Vue.set(this.request, 'body', arr)
+		},
 		addRouter(){
-			let router_path = this.routerPath
+			let req_path = this.request.url
 			let json_str = JSON.stringify(this.jsonObj)
-			let program = this.program
+			let program = this.request.program
 			axios.post('/api/tree/add', {
-				router_path, json_str
+				req_path, json_str
 			}).then(res => {
 			})
 		},
@@ -69,6 +93,7 @@ export default {
 		judgeType: M_TOOLS.judgeType
 	},
 	components: {
+		'params': params
 	},
 	mounted(){
 		eventCenter.$on('getIds', keys => {

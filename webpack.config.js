@@ -63,7 +63,8 @@ let config = {
 	externals: {
 		'vue': 'Vue',
 		'element-ui': 'ELEMENT',
-		'vueRouter': 'VueRouter'
+		'vueRouter': 'VueRouter',
+		'vuex': 'Vuex'
 	},
 	mode: "production"
 }

@@ -1,24 +1,45 @@
 <template>
 	<div>
 		<el-row>
-			<h3>路由列表</h3>
-		</el-row>
-		<el-row>
-			<h4>URL</h4>
-			<el-input v-model="routerPath" placeholder="/post/detail">
-				<template slot="prepend">Http://</template>
-			</el-input>
+			<h3>新增请求</h3>
 			<el-button type="primary" @click="addRouter">添加路由</el-button>
 		</el-row>
-
 		<el-row>
-			<h4>TYPE</h4>
-			<el-radio v-model="reqType" label="GET" border>GET</el-radio>
-		    <el-radio v-model="reqType" label="POST" border>POST</el-radio>
+		</el-row>
+		<el-row>
+			<span class="item-title">项目: </span>
+			<el-select v-model="request.program" placeholder="请选择项目">
+				<el-option v-for="item in programs" :key="item.program" :value="item.program"></el-option>
+  			</el-select>
+		</el-row>
+		<el-row>
+			<span class="item-title">url: </span>
+			<el-input class="req-path" v-model="request.url" placeholder="/post/detail">
+				<template slot="prepend">{{ 'http://localhost:5006/' + request.program }}</template>
+			</el-input>
+		</el-row>
+		
+		<el-row>
+			<span class="item-title">参数: </span>
+			<span>
+				<params :title="'GET'" :params="request.query" @updateParams="updateQuery"></params>
+				<params :title="'POST'" :params="request.body" :disabled="request.type != 'POST'" @updateParams="updateBody"></params>
+			</span>
 		</el-row>
 
 		<el-row>
-			<h4>JSON</h4>
+			<span class="item-title">生成链接: </span>
+			<el-input v-model="queryStr" readonly></el-input>
+		</el-row>
+
+		<el-row>
+			<span class="item-title">请求类型: </span>
+			<el-radio v-model="request.type" label="GET" border>GET</el-radio>
+		    <el-radio v-model="request.type" label="POST" border>POST</el-radio>
+		</el-row>
+
+		<el-row>
+			<h5>JSON</h5>
 			<el-col :span="12">
 				<el-input
 					type="textarea"

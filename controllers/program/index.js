@@ -7,7 +7,7 @@ const crud = require('../../database/crud')
 const config = require('../../config')
 
 
-router.get('/', (req, res) => {
+router.get('/get', (req, res) => {
 	let files = fs.readdirSync(config.PROGRAM_PATH)
 	let info = []
 	files.forEach(file_name => {
