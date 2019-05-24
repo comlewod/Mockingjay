@@ -1,5 +1,5 @@
 <template>
-<el-card class="query-card">
+<el-card class="query-card" v-show="!disabled">
 	<div slot="header" class="clearfix">
 		<span>{{ title }}</span>
 		<el-button class="add-btn" type="text" @click="addQuery">新增参数</el-button>
