@@ -8,6 +8,7 @@ window.eventCenter = new Vue()
 export default {
 	data(){
 		return {
+			proxy: 'http://localhost:5006/',
 			request: {
 				url: '',
 				type: 'GET',
@@ -34,28 +35,38 @@ export default {
 			programs: 'programs'
 		}),
 		queryStr(){
-			let str = 'http://localhost:5006/' + this.request.program + this.request.url
+			let str = ''
 			if( this.request.query.length && this.request.query[0].key ){
-				str += '?' + this.request.query.map(item => item.key + '=' + item.value).join('&')
+				str += '?' + this.request.query.filter(item => !!item.key.trim()).map(item => item.key + '=' + item.value).join('&')
 			}
 			return str
 		},
 	},
 	methods: {
 		updateQuery(arr){
-			Vue.set(this.request, 'query', arr)
+			this.request.query = arr
 		},
 		updateBody(arr){
-			console.log(arr)
-			Vue.set(this.request, 'body', arr)
+			this.request.body = arr
+		},
+		arrToObj(arr){
+			let newArr = arr.filter(item => !!item.key.trim())
+			let obj = {}
+			newArr.forEach(item => {
+				obj[item.key] = item.value.trim()
+			})
+			return obj
 		},
 		addRouter(){
-			let req_path = this.request.url
-			let json_str = JSON.stringify(this.jsonObj)
-			let program = this.request.program
-			axios.post('/api/tree/add', {
-				req_path, json_str
-			}).then(res => {
+			let _data = {
+				url: this.request.url,
+				type: this.request.type,
+				query: JSON.stringify(this.arrToObj(this.request.query)),
+				body: JSON.stringify(this.arrToObj(this.request.body)),
+				program: this.request.program,
+				json: JSON.stringify(this.jsonObj)
+			}
+			axios.post('/api/tree/add', _data).then(res => {
 			})
 		},
 		blurJson(){
@@ -69,7 +80,6 @@ export default {
 					return
 				}
 				let newJson = this.objectLoop(obj)	
-				//console.log(111, newJson)
 				Vue.set(this, 'jsonObj', newJson)
 			}
 		},

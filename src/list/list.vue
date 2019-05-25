@@ -36,7 +36,7 @@
 		<el-row>
 			<el-col :span="2">参数:</el-col>
 			<el-col :span="11">
-				<el-input class="query-str" type="textarea" v-model="queryStr" readonly></el-input>
+				<el-input class="query-str" type="textarea" :value="proxy + request.program + request.url + queryStr" readonly></el-input>
 			</el-col>
 		</el-row>
 
@@ -53,8 +53,7 @@
 			<el-col :span="11">
 				<el-input
 					type="textarea"
-					placeholder="请输入json字符串"
-					:rows="10"
+					placeholder="json"
 					:autosize="true"
 					@focus="jsonErr = false"
 					@input="blurJson"
