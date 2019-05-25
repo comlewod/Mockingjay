@@ -5,6 +5,7 @@ const config = require('../config')
 
 module.exports = app => {
 	require('./getPrograms')(app)
+	require('../models')(app)
 
 	//允许跨域访问	
 	app.all('*', (req, res, next) => {
@@ -20,8 +21,6 @@ module.exports = app => {
 	app.use(bodyParser.urlencoded({
 		extended: false
 	}));
-
-	app.use(require('../models'))
 
 	app.use('/api', require('../controllers'))
 

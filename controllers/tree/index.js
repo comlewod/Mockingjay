@@ -5,7 +5,7 @@ const path = require('path')
 const config = require('../../config')
 
 router.post('/add', (req, res) => {
-	let { url, type, json, program, query, body } = req.body
+	let { url, type, json, program, query, body, response } = req.body
 
 	let path_arr = url.split('/').filter(str => !!str.trim())
 	let file_path = ''
@@ -23,7 +23,7 @@ router.post('/add', (req, res) => {
 		})
 		file_path = path.join(config.PROGRAM_PATH, program, file_path + '.js')
 
-		let file_content = { url, type, json, program, query, body }
+		let file_content = { url, type, json, program, query, body, response }
 		fs.writeFileSync(file_path, 'module.exports=' + JSON.stringify(file_content), 'utf8')
 		
 		res.send(file_path);return

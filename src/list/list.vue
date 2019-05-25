@@ -23,7 +23,7 @@
 		</el-row>
 		
 		<el-row>
-			<el-col :span="2">参数:</el-col>
+			<el-col :span="2">参数：</el-col>
 			<el-col :span="8">
 				<params :title="'GET'" :params="request.query" @updateParams="updateQuery"></params>
 			</el-col>
@@ -34,17 +34,24 @@
 		</el-row>
 
 		<el-row>
-			<el-col :span="2">参数:</el-col>
+			<el-col :span="2">url：</el-col>
 			<el-col :span="11">
 				<el-input class="query-str" type="textarea" :value="proxy + request.program + request.url + queryStr" readonly></el-input>
 			</el-col>
 		</el-row>
 
 		<el-row>
-			<el-col :span="2">参数:</el-col>
+			<el-col :span="2">类型：</el-col>
 			<el-col :span="11">
 				<el-radio v-model="request.type" label="GET" border>GET</el-radio>
 				<el-radio v-model="request.type" label="POST" border>POST</el-radio>
+			</el-col>
+		</el-row>
+
+		<el-row>
+			<el-col :span="2">响应头：</el-col>
+			<el-col :span="8">
+				<params :title="'Response'" :params="request.response" @updateParams="updateResponse"></params>
 			</el-col>
 		</el-row>
 

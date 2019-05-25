@@ -12,9 +12,10 @@ export default {
 			request: {
 				url: '',
 				type: 'GET',
+				program: '',
 				query: [{ key: '', value: ''}],
 				body: [{ key: '', value: ''}],
-				program: ''
+				response: [{ key: '', value: ''}],
 			},
 
 			jsonStr: '',
@@ -48,6 +49,9 @@ export default {
 		},
 		updateBody(arr){
 			this.request.body = arr
+		},
+		updateResponse(arr){
+			this.request.response = arr
 		},
 		arrToObj(arr){
 			let newArr = arr.filter(item => !!item.key.trim())
