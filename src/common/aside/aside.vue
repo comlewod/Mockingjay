@@ -7,7 +7,7 @@
 				</a>
 			</el-tooltip>
 			<el-tooltip content="项目列表" placement="right">
-				<router-link class="aside-item" to="/programs">
+				<router-link class="aside-item" to="/projects">
 					<i class="el-icon-folder"></i>
 				</router-link>
 			</el-tooltip>

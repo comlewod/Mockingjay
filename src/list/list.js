@@ -12,7 +12,7 @@ export default {
 			request: {
 				url: '',
 				type: 'GET',
-				program: '',
+				project: '',
 				query: [{ key: '', value: ''}],
 				body: [{ key: '', value: ''}],
 				response: [{ key: '', value: ''}],
@@ -33,7 +33,7 @@ export default {
 	},
 	computed: {
 		...mapState({
-			programs: 'programs'
+			projects: 'projects'
 		}),
 		queryStr(){
 			let str = ''
@@ -67,7 +67,7 @@ export default {
 				type: this.request.type,
 				query: JSON.stringify(this.arrToObj(this.request.query)),
 				body: JSON.stringify(this.arrToObj(this.request.body)),
-				program: this.request.program,
+				project: this.request.project,
 				json: JSON.stringify(this.jsonObj)
 			}
 			axios.post('/api/tree/add', _data).then(res => {

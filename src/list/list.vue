@@ -8,8 +8,8 @@
 		<el-row>
 			<el-col :span="2">项目:</el-col>
 			<el-col :span="11">
-				<el-select v-model="request.program" placeholder="请选择项目">
-					<el-option v-for="item in programs" :key="item.program" :value="item.program"></el-option>
+				<el-select v-model="request.project" placeholder="请选择项目">
+					<el-option v-for="item in projects" :key="item.name" :value="item.name"></el-option>
 				</el-select>
 			</el-col>
 		</el-row>
@@ -17,7 +17,7 @@
 			<el-col :span="2">url:</el-col>
 			<el-col :span="11">
 				<el-input class="req-path" v-model="request.url" placeholder="/post/detail">
-					<template slot="prepend">{{ 'http://localhost:5006/' + request.program }}</template>
+					<template slot="prepend">{{ 'http://localhost:5006/' + request.project }}</template>
 				</el-input>
 			</el-col>
 		</el-row>
@@ -36,7 +36,7 @@
 		<el-row>
 			<el-col :span="2">url：</el-col>
 			<el-col :span="11">
-				<el-input class="query-str" type="textarea" :value="proxy + request.program + request.url + queryStr" readonly></el-input>
+				<el-input class="query-str" type="textarea" :value="proxy + request.project + request.url + queryStr" readonly></el-input>
 			</el-col>
 		</el-row>
 

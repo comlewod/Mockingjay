@@ -6,21 +6,20 @@ const config = require('../config')
 module.exports = app => {
 	//获取所有已有项目
 	try {
-		fs.readdirSync(config.PROGRAM_PATH)
+		fs.readdirSync(config.PROJECTS_PATH)
 	} catch(e){
-		console.log(111, e)
-		fs.mkdirSync(config.PROGRAM_PATH)
+		fs.mkdirSync(config.PROJECTS_PATH)
 	}
-	let files = fs.readdirSync(config.PROGRAM_PATH)
-	let programs = []
+	let files = fs.readdirSync(config.PROJECTS_PATH)
+	let projects = []
 	files.forEach(file_name => {
-		programs.push({
-			program: file_name
+		projects.push({
+			project: file_name
 		})
 
-		glob(path.join(config.PROGRAM_PATH, file_name), (err, files) => {
+		glob(path.join(config.PROJECTS_PATH, file_name), (err, files) => {
 		})
 	})
 
-	app.locals.programs = programs
+	app.locals.projects = projects
 }

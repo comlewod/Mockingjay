@@ -16,11 +16,11 @@ const home = { template: '<div>Welcome</div>' }
 //}
 //webpack异步加载组件，特殊的注释语法提供chunk name
 const List = () => import(/* webpackChunkName: "list"*/ './list/list.vue')
-const Programs = () => import(/* webpackChunkName: "list"*/ './programs/programs.vue')
+const Programs = () => import(/* webpackChunkName: "list"*/ './projects/projects.vue')
 
 const routes = [
 	{ path: '/', component: home },
-	{ path: '/programs', component: Programs },
+	{ path: '/projects', component: Programs },
 	{ path: '/list', component: List }	
 ]
 
@@ -32,16 +32,16 @@ let router = new VueRouter({
 //store
 const store = new Vuex.Store({
 	state: {
-		programs: []
+		projects: []
 	},
 	mutations: {
 		UPDATE_PROGRAMS(state){
-			axios.get('/api/program/get').then(res => {
+			axios.get('/api/project/get').then(res => {
 				res = res.data
 				if( res.code == 0 ){
-					state.programs = res.info
+					state.projects = res.info
 				} else {
-					state.programs = []
+					state.projects = []
 				}
 			})
 		}
