@@ -27,7 +27,7 @@
 				<span class="item-val" v-else>{{ item.value }}</span>
 			</template>
 
-			<div class="edit-bar">
+			<div class="edit-bar" v-if="justread">
 				<i class="el-icon-edit" @click="editItem(item.keys)"></i>
 			</div>
 		</div>

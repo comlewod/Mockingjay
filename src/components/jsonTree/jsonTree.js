@@ -1,6 +1,6 @@
 export default {
 	name: 'jsonTree',
-	props: ['obj'],
+	props: ['obj', 'justread'],
 	data(){
 		return {
 			editDialogShow: false,
