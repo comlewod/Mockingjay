@@ -25,7 +25,9 @@
 					</el-table-column>
 				</el-table>
 			</el-col>
-			<el-col :span="14"></el-col>
+			<el-col :span="1">&nbsp;</el-col>
+			<el-col :span="13">
+				<json-tree :obj="jsonObj"></json-tree>
 			</el-col>
 		</el-row>
 	</div>

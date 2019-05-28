@@ -1,10 +1,12 @@
 import { mapState } from 'vuex'
+import jsonTree from '../components/jsonTree/jsonTree.vue'
 
 export default {
 	data(){
 		return {
 			projectName: '',
-			list: []
+			list: [],
+			jsonObj: {}
 		}
 	},
 	computed: {
@@ -26,6 +28,9 @@ export default {
 			this.list = list
 		}
 	},
+	components: {
+		'json-tree': jsonTree
+	},
 	created(){
 	},
 	methods: {
@@ -37,8 +42,10 @@ export default {
 			let params = {
 				file_path: item.path
 			}
-			axios.get('/api/tree/get', {params}).then(res => {
-				if( res.code == 0 ){
+			axios.get('/api/tree/get', {params}).then(({data}) => {
+				if( data.code == 0 ){
+					this.jsonObj = JSON.parse(data.info.json)
+					console.log(this.jsonObj)
 				} else {
 					this.$message.error('文件读取错误')
 				}

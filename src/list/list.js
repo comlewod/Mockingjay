@@ -1,8 +1,7 @@
 import { mapState } from 'vuex'
-import jsonTree from './jsonTree/jsonTree.vue'
+import jsonTree from '../components/jsonTree/jsonTree.vue'
 import params from './params/params.vue'
 
-Vue.component('json-tree', jsonTree)
 window.eventCenter = new Vue()
 
 export default {
@@ -107,7 +106,8 @@ export default {
 		judgeType: M_TOOLS.judgeType
 	},
 	components: {
-		'params': params
+		'params': params,
+		'json-tree': jsonTree
 	},
 	mounted(){
 		eventCenter.$on('getIds', keys => {

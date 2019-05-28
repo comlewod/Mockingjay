@@ -1,4 +1,5 @@
 export default {
+	name: 'jsonTree',
 	props: ['obj'],
 	data(){
 		return {
