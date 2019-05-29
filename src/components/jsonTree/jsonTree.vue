@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="json-tree" v-show="obj">
 		<div :class="['each-item', 'item-' + item.type]" v-for="(item, key) in obj">
 			<!-- 对象 -->
 			<template v-if="item.type == 'object'">
@@ -27,7 +27,7 @@
 				<span class="item-val" v-else>{{ item.value }}</span>
 			</template>
 
-			<div class="edit-bar" v-if="justread">
+			<div class="edit-bar" v-if="!justread">
 				<i class="el-icon-edit" @click="editItem(item.keys)"></i>
 			</div>
 		</div>

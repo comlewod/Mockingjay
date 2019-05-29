@@ -2,8 +2,6 @@ import { mapState } from 'vuex'
 import jsonTree from '../components/jsonTree/jsonTree.vue'
 import params from './params/params.vue'
 
-window.eventCenter = new Vue()
-
 export default {
 	data(){
 		return {
@@ -21,13 +19,6 @@ export default {
 			jsonObj: {},
 			jsonErr: false,
 			jsonArr: [],
-
-			editDialogShow: false,
-			edit: {
-				key: '',
-				obj: {},
-				list: []
-			},
 		}
 	},
 	computed: {
@@ -69,7 +60,10 @@ export default {
 				project: this.request.project,
 				json: JSON.stringify(this.jsonObj)
 			}
-			axios.post('/api/tree/add', _data).then(res => {
+			axios.post('/api/tree/add', _data).then(({data}) => {
+				if( data.code == 0 ){
+				} else {
+				}
 			})
 		},
 		blurJson(){
@@ -110,22 +104,5 @@ export default {
 		'json-tree': jsonTree
 	},
 	mounted(){
-		eventCenter.$on('getIds', keys => {
-			let obj = Object.assign({}, this.jsonObj)
-			let editKey = keys[0]
-			let editObj = obj[editKey]
-			keys.forEach(key => {
-				if( key && obj[key] && obj[key].value ){
-					editObj = obj[key]
-					obj = obj[key].value
-					editKey = key 
-				} else {
-					alert('对象不存在: ' + key)
-				}
-			})
-			this.editDialogShow = true
-			this.edit.key = editKey 
-			this.edit.obj = editObj
-		})
 	}
 }

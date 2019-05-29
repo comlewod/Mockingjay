@@ -1,51 +1,53 @@
-.child-tree {
-	padding-left: 20px;
-}
-
-.each-item {
-	position: relative;
-	&:after {
-		content: ',';
-	}
-	&:last-child:after {
-		content: '';
+.json-tree {
+	.child-tree {
+		padding-left: 20px;
 	}
 
-	.edit-bar {
-		position: absolute;
-		top: 0;
-		right: 0;
-		i {
-			padding: 0px 4px;
-			display: inline-block;
-			height: 100%;
-			cursor: pointer;
-			box-sizing: border-box;
-			&:hover {
-				color: #409EFF;
-				border-radius: 2px;
+	.each-item {
+		position: relative;
+		&:after {
+			content: ',';
+		}
+		&:last-child:after {
+			content: '';
+		}
+
+		.edit-bar {
+			position: absolute;
+			top: 0;
+			right: 0;
+			i {
+				padding: 0px 4px;
+				display: inline-block;
+				height: 100%;
+				cursor: pointer;
+				box-sizing: border-box;
+				&:hover {
+					color: #409EFF;
+					border-radius: 2px;
+				}
 			}
 		}
 	}
-}
-.item-key {
-	font-weight: bold;
-}
-.item-val {
-	font-weight: bold;
-}
-.item-string {
-	.item-val {
-		color: green;
+	.item-key {
+		font-weight: bold;
 	}
-}
-.item-boolean {
 	.item-val {
-		color: red;
+		font-weight: bold;
 	}
-}
-.item-number {
-	.item-val {
-		color: blue;
+	.item-string {
+		.item-val {
+			color: green;
+		}
+	}
+	.item-boolean {
+		.item-val {
+			color: red;
+		}
+	}
+	.item-number {
+		.item-val {
+			color: blue;
+		}
 	}
 }

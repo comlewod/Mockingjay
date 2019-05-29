@@ -27,9 +27,25 @@
 			</el-col>
 			<el-col :span="1">&nbsp;</el-col>
 			<el-col :span="13">
-				<json-tree :obj="jsonObj"></json-tree>
+				<div class="obj-tree">
+					<json-tree :obj="jsonObj" :justread="false"></json-tree>
+				</div>
 			</el-col>
 		</el-row>
+
+		<el-dialog title="编辑" :visible.sync="editDialogShow">
+			<div>
+				<p>key: {{ edit.key }}</p>
+				<el-table
+					:data="edit.obj.list"
+				>
+				</el-table>
+			</div>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click="editDialogShow = false">取消</el-button>
+				<el-button type="primary">确定</el-button>
+			</div>
+		</el-dialog>
 	</div>
 </template>
 

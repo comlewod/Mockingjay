@@ -3,6 +3,8 @@ const path = require('path')
 const glob = require('glob')
 const config = require('../config')
 
+const routes = require('./routes')
+
 //遍历获取所有子目录和文件
 function dirLoop(dir_path){
 	let obj = {dirs: {}, files: []}
@@ -31,7 +33,7 @@ function dirLoop(dir_path){
 }
 
 module.exports = app => {
-	global.Models = {
+	let Models = {
 		//获取所有项目
 		getPorgrams(){
 			let info = dirLoop(config.PROJECTS_PATH)
@@ -44,4 +46,7 @@ module.exports = app => {
 			return json || {}
 		}
 	}
+	Models.routes = routes
+
+	global.Models = Models
 }
