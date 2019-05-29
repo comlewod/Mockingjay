@@ -35,15 +35,29 @@
 
 		<el-dialog title="编辑" :visible.sync="editDialogShow">
 			<div>
-				<p>key: {{ edit.key }}</p>
-				<el-table
-					:data="edit.obj.list"
-				>
-				</el-table>
+				<label>key: </label>
+				<el-input v-model="editObj.code" placeholder="key"></el-input>
+				<label>value: </label>
+				<ul>
+					<li v-for="(val, index) in editObj.list">
+						<el-radio v-model="editObj.defaultIndex" :label="index">&nbsp;</el-radio>
+						<span class="edit-input">
+							<template v-if="editObj.type == 'string'">
+								<el-input v-model="editObj.list[index]" placeholder="key"></el-input>
+							</template>
+							<template v-if="editObj.type == 'array'">
+							</template>
+						</span>
+						<span class="edit-operate">
+							<i class="el-icon-delete-solid" @click="delItem(index)"></i>
+						</span>
+					</li>
+				</ul>
+				<div @click="addList">+新增</div>
 			</div>
 			<div slot="footer" class="dialog-footer">
 				<el-button @click="editDialogShow = false">取消</el-button>
-				<el-button type="primary">确定</el-button>
+				<el-button @click="updateEdit" type="primary">确定</el-button>
 			</div>
 		</el-dialog>
 	</div>

@@ -78,20 +78,27 @@ export default {
 				}
 				let newJson = this.objectLoop(obj)	
 				Vue.set(this, 'jsonObj', newJson)
+				M_TOOLS.logObj(newJson)
 			}
 		},
-		objectLoop(obj, keys){
+		objectLoop(obj, keyArr){
 			let newObj = {}
+			let keys = keyArr ? keyArr.slice(0) : []
 			for( let key in obj ){
 				let value = obj[key]
 				let type = this.judgeType(value)
-				let item = { type, value }
-				item.keys = keys ? keys.slice(0) : []
-				item.keys.push(key)
-				item.list = [value]
-				item.defaultIndex = 0
+				let _keys = keys.slice(0)
+				_keys.push(key)
+				let item = { 
+					index: 0,
+					code: key,
+					keys: _keys,
+					type, 
+				}
 				if( ['object', 'array'].includes(type) ){
-					item.value = this.objectLoop(value, item.keys.slice(0))	
+					item.list = [this.objectLoop(value, item.keys)]
+				} else {
+					item.list = [value]
 				}
 				newObj[key] = item
 			}

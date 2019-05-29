@@ -13,6 +13,9 @@ window.M_TOOLS = {
 					typeof obj
 		return type
 	},
+	logObj(obj){
+		console.log(JSON.parse(JSON.stringify(obj)))
+	}
 }
 
 export default {}

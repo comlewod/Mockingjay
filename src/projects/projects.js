@@ -11,10 +11,7 @@ export default {
 
 			jsonObj: {},
 			editDialogShow: false,
-			edit: {
-				key: '',
-				obj: {},
-				list: []
+			editObj: {
 			},
 		}
 	},
@@ -59,25 +56,84 @@ export default {
 					this.$message.error('文件读取错误')
 				}
 			})
-		}
+		},
+		addList(){
+			if( this.editObj.type == 'string' ){
+				this.editObj.list.push('')
+			}
+		},
+		updateEdit(){
+			console.log(this.editObj)
+			if( this.editObj.list[this.editObj.defaultIndex] ){
+			} else {
+				this.$message.error('选择一个默认返回值')
+			}
+		},
+		delItem(index){
+			let arr = this.editObj.list.slice(0)
+			arr.splice(index, 1)
+			if( arr.length == 0 ){
+				arr.push('')
+			}
+			this.editObj.list = arr
+		},
+		judgeType: M_TOOLS.judgeType
 	},
 	mounted(){
 		eventCenter.$on('getIds', keys => {
 			let obj = Object.assign({}, this.jsonObj)
-			let editKey = keys[0]
-			let editObj = obj[editKey]
+			let editObj = obj[keys[0]]
 			keys.forEach(key => {
 				if( key && obj[key] && obj[key].value ){
 					editObj = obj[key]
 					obj = obj[key].value
-					editKey = key 
 				} else {
-					alert('对象不存在: ' + key)
+					console.log('对象不存在: ' + key)
 				}
 			})
 			this.editDialogShow = true
-			this.edit.key = editKey 
-			this.edit.obj = editObj
+			this.editObj = Object.assign({}, editObj)
+			console.log(editObj)
 		})
 	},
 }
+
+/*
+{
+	code: {
+		keyCode: 'code'
+		type: 'object',
+		value: {
+		},
+		valueList: [
+		]
+	},
+	info: {
+		keyCode: 'info',
+		type: 'array',
+		valueList: [
+			{ 
+				attr: {
+					keyCode: 'attr',
+					type: 'object',
+					valueList: [
+					]
+				},
+				skus: {
+					keyCode: 'skus',
+					type: 'array',
+					valueList: [
+						[ {
+							name: {
+								type: 'object',
+
+							}
+					]
+				}
+			}
+		]
+	}
+}
+*/
+
+
