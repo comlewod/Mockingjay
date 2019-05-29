@@ -40,7 +40,7 @@
 				<label>value: </label>
 				<ul>
 					<li v-for="(val, index) in editObj.list">
-						<el-radio v-model="editObj.defaultIndex" :label="index">&nbsp;</el-radio>
+						<el-radio v-model="editObj.index" :label="index">&nbsp;</el-radio>
 						<span class="edit-input">
 							<template v-if="editObj.type == 'string'">
 								<el-input v-model="editObj.list[index]" placeholder="key"></el-input>

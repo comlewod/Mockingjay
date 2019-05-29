@@ -8,7 +8,7 @@
 					<span>{</span>
 				</div>
 				<div class="child-tree">
-					<json-tree :obj="item.value"></json-tree>
+					<json-tree :obj="item.list[item.index]"></json-tree>
 				</div>
 				<span>}</span>
 			</template>
@@ -16,15 +16,15 @@
 			<template v-else-if="item.type == 'array'">
 				<span class="item-key">{{ key }}: [</span>
 				<div class="child-tree">
-					<json-tree :obj="item.value"></json-tree>
+					<json-tree :obj="item.list[item.index]"></json-tree>
 				</div>
 				<span>]</span>
 			</template>
 			
 			<template v-else>
 				<span class="item-key">{{ key }}: </span>
-				<span class="item-val" v-if="item.type == 'string'">"{{ item.value }}"</span>
-				<span class="item-val" v-else>{{ item.value }}</span>
+				<span class="item-val" v-if="item.type == 'string'">"{{ item.list[item.index] }}"</span>
+				<span class="item-val" v-else>{{ item.list[item.index] }}</span>
 			</template>
 
 			<div class="edit-bar" v-if="!justread">

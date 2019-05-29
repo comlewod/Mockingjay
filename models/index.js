@@ -34,6 +34,36 @@ function dirLoop(dir_path){
 
 module.exports = app => {
 	let Models = {
+		projects: {
+			add(name){
+				let _path = path.join(config.PROJECTS_PATH, name)
+				let info = {}
+				try {
+					fs.accessSync(_path)
+					info = {
+						code: -1,
+						msg: '项目已存在'
+					}
+				} catch(e) {
+					fs.mkdir(_path, err => {
+						if( err ){
+							throw err
+							info = {
+								code: -1,
+								msg: '项目已存在'
+							}
+						} else {
+							info = {
+								code: 0,
+								msg: ''
+							}
+						}
+					})
+				}
+				return info
+
+			}
+		},
 		//获取所有项目
 		getPorgrams(){
 			let info = dirLoop(config.PROJECTS_PATH)

@@ -23,7 +23,7 @@ export default {
 			let name = this.newProgram.name.trim()
 			if( name ){
 				if( /^[a-zA-Z]{1,15}$/.test(name) ){
-					axios.post('/api/program/add', { 
+					axios.post('/api/project/add', { 
 						name: name
 					}).then(res => {
 						res = res.data

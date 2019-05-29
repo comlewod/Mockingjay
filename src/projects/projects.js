@@ -64,7 +64,7 @@ export default {
 		},
 		updateEdit(){
 			console.log(this.editObj)
-			if( this.editObj.list[this.editObj.defaultIndex] ){
+			if( this.editObj.list[this.editObj.index] ){
 			} else {
 				this.$message.error('选择一个默认返回值')
 			}
@@ -81,12 +81,13 @@ export default {
 	},
 	mounted(){
 		eventCenter.$on('getIds', keys => {
-			let obj = Object.assign({}, this.jsonObj)
-			let editObj = obj[keys[0]]
+			let value = Object.assign({}, this.jsonObj)
+			let editObj = {} 
 			keys.forEach(key => {
-				if( key && obj[key] && obj[key].value ){
-					editObj = obj[key]
-					obj = obj[key].value
+				let item = value[key]
+				if( item ){
+					editObj = value[key]
+					value = value[key]['list'][item.index]
 				} else {
 					console.log('对象不存在: ' + key)
 				}
@@ -97,43 +98,4 @@ export default {
 		})
 	},
 }
-
-/*
-{
-	code: {
-		keyCode: 'code'
-		type: 'object',
-		value: {
-		},
-		valueList: [
-		]
-	},
-	info: {
-		keyCode: 'info',
-		type: 'array',
-		valueList: [
-			{ 
-				attr: {
-					keyCode: 'attr',
-					type: 'object',
-					valueList: [
-					]
-				},
-				skus: {
-					keyCode: 'skus',
-					type: 'array',
-					valueList: [
-						[ {
-							name: {
-								type: 'object',
-
-							}
-					]
-				}
-			}
-		]
-	}
-}
-*/
-
 

@@ -17,8 +17,10 @@ module.exports = app => {
 
 	app.use(express.static(path.join(config.ROOT, 'public')))
 
-	app.use(bodyParser.json())
+	//将请求容量扩到50mb
+	app.use(bodyParser.json({limit: '50mb'}))
 	app.use(bodyParser.urlencoded({
+		limit: '50mb',
 		extended: false
 	}));
 
