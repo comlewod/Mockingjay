@@ -2,6 +2,12 @@
 	<div class="mk-aside">
 		<el-aside width="50px">
 			<el-tooltip content="新增项目" placement="right">
+				<router-link class="aside-item" to="/data-line">
+					<i class="el-icon-data-line"></i>
+				</router-link>
+			</el-tooltip>
+
+			<el-tooltip content="新增项目" placement="right">
 				<a class="aside-item" href="javascript:;" @click="addProgram">
 					<i class="el-icon-folder-add"></i>
 				</a>
