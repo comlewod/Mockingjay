@@ -22,8 +22,6 @@ const routes = [
 let router = new VueRouter({
 	mode: 'history',
 	routes,
-	beforeEach((to, from, next) => {
-	})
 })
 
 console.log(router)
